@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by huxiaoliu on 2015/9/7.
+ *
  * 封装一些常用的数据库操作
  */
 public class TodayWeatherDB {
