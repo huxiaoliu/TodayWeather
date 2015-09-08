@@ -95,7 +95,7 @@ public class TodayWeatherDB {
         if (city != null) {
             ContentValues values = new ContentValues();
             values.put("city_name", city.getCityName());
-            values.put("county_code", city.getCityCode());
+            values.put("city_code", city.getCityCode());
             values.put("province_id", city.getProvinceId());
             db.insert("City", null, values);
         }
@@ -140,7 +140,7 @@ public class TodayWeatherDB {
 
 
     /**
-     * 从数据库读取某市下多有的县信息
+     * 从数据库读取某市下所有的县信息
      * */
     public List<County> loadCounties(int cityId){
         List<County> list = new ArrayList<County>();
@@ -152,6 +152,7 @@ public class TodayWeatherDB {
                 county.setCountyName(cursor.getString(cursor.getColumnIndex("county_name")));
                 county.setCountyCode(cursor.getString(cursor.getColumnIndex("county_code")));
                 county.setCityId(cityId);
+                list.add(county);
             }while (cursor.moveToNext());
         }
         if (cursor != null){
